@@ -10,8 +10,8 @@ public final class PageWithType implements Page {
   }
 
   @Override
-  public void print(Media media) {
-    media.attach("Content-Type", this.mime);
-    this.origin.print(media);
+  public void print(Connection c) {
+    this.origin.print(
+        new ConnectionWithHeader(c, "Content-Type", this.mime));
   }
 }
